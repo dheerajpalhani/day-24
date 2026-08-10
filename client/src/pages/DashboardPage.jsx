@@ -37,7 +37,7 @@ const DashboardPage = () => {
   const pieData = useMemo(() => categories.map((item) => ({ name: item.name, value: item.amount })), [categories]);
 
   if (loading) {
-    return <div className="text-slate-500">Loading dashboard...</div>;
+    return <div className="text-slate-600">Loading dashboard...</div>;
   }
 
   return (
