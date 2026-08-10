@@ -1,16 +1,74 @@
-# React + Vite
+# Expense Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A full-stack expense tracking application with authentication, charts, and AI-powered spending insights.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- User authentication with login and registration
+- Add, edit, and view personal expenses
+- Category-based expense organization
+- Dashboard statistics and visual summaries
+- AI-generated insights for spending patterns
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Frontend: React, Vite, React Router, Recharts
+- Backend: Node.js, Express, MongoDB, JWT, bcrypt
+- AI: Google Gemini API
 
-## Expanding the Oxlint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- client: React frontend
+- server: Express backend API
+
+## Getting Started
+
+### 1. Install dependencies
+
+In the client folder:
+
+```bash
+npm install
+```
+
+In the server folder:
+
+```bash
+npm install
+```
+
+### 2. Configure environment variables
+
+Create a `.env` file in the server directory with:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+### 3. Run the app
+
+Start the backend:
+
+```bash
+cd server
+npm run dev
+```
+
+Start the frontend:
+
+```bash
+cd client
+npm run dev
+```
+
+The frontend will be available in the browser, and the backend API will run on the configured port.
+
+## Notes
+
+- Make sure MongoDB is running or reachable through the provided connection string.
+- The AI insights feature depends on a valid Gemini API key.
+
+
