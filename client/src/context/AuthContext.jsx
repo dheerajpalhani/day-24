@@ -33,6 +33,27 @@ export const AuthProvider = ({ children }) => {
     return response.data;
   };
 
+  const loginDemo = (role = 'user') => {
+    const demoUser =
+      role === 'developer'
+        ? {
+            id: 'demo-developer',
+            name: 'Developer Demo',
+            email: 'developer@expenseai.demo',
+            role: 'developer',
+          }
+        : {
+            id: 'demo-user',
+            name: 'Demo User',
+            email: 'demo@expenseai.demo',
+            role: 'user',
+          };
+
+    setUser(demoUser);
+    setToken(`demo-${role}-token`);
+    return { user: demoUser, token: `demo-${role}-token` };
+  };
+
   const register = async (name, email, password) => {
     setLoading(true);
     const response = await api.post('/auth/register', { name, email, password });
@@ -48,7 +69,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const value = useMemo(
-    () => ({ user, token, loading, login, register, logout, isAuthenticated: Boolean(user && token) }),
+    () => ({ user, token, loading, login, loginDemo, register, logout, isAuthenticated: Boolean(user && token) }),
     [user, token, loading]
   );
 

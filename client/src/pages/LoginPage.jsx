@@ -8,7 +8,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const { login } = useAuth();
+  const { login, loginDemo } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -21,6 +21,20 @@ const LoginPage = () => {
       navigate('/');
     } catch (err) {
       setError(err?.response?.data?.message || 'Login failed.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDemoLogin = (role = 'user') => {
+    setError('');
+    setLoading(true);
+
+    try {
+      loginDemo(role);
+      navigate('/');
+    } catch (err) {
+      setError('Unable to start demo session.');
     } finally {
       setLoading(false);
     }
@@ -93,6 +107,37 @@ const LoginPage = () => {
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
+
+          <div className={`mt-5 rounded-2xl border p-4 ${darkMode ? 'border-slate-700 bg-slate-900/50' : 'border-slate-200 bg-slate-50'}`}>
+            <p className={`text-xs font-semibold uppercase tracking-[0.2em] ${darkMode ? 'text-sky-400' : 'text-sky-600'}`}>
+              Demo Access
+            </p>
+            <p className={`mt-2 text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+              Try the app instantly without a real account or test credentials.
+            </p>
+            <div className="mt-3 grid gap-2">
+              <button
+                type="button"
+                onClick={() => handleDemoLogin('user')}
+                disabled={loading}
+                className="rounded-xl bg-sky-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-sky-500 disabled:opacity-60"
+              >
+                Continue as Demo User
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDemoLogin('developer')}
+                disabled={loading}
+                className={`rounded-xl border px-3 py-2 text-sm font-medium transition disabled:opacity-60 ${
+                  darkMode
+                    ? 'border-slate-600 bg-slate-800 text-slate-100 hover:bg-slate-700'
+                    : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                Continue as Developer Demo
+              </button>
+            </div>
+          </div>
 
           <p className={`mt-4 text-sm ${darkMode ? 'text-slate-300' : 'text-slate-500'}`}>
             Need an account?{' '}
