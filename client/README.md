@@ -1,54 +1,87 @@
-# Expense Tracker App
+# Expense AI Tracker
 
-A full-stack expense tracking application with authentication, charts, and AI-powered spending insights.
+Expense AI Tracker is a full-stack expense management app designed to help users track spending, monitor category trends, and explore AI-powered financial insights.
 
 ## Features
 
-- User authentication with login and registration
-- Add, edit, and view personal expenses
-- Category-based expense organization
-- Dashboard statistics and visual summaries
-- AI-generated insights for spending patterns
+- Secure authentication with login and registration flows
+- Add, edit, delete, and search expense entries
+- Filter expenses by category and keyword
+- Dashboard with totals, monthly trends, and category breakdowns
+- AI-generated financial insights and budget suggestions
+- Light and dark mode toggle on the login page
+- Demo login access for quick UI testing without real credentials
+- Protected routes for authenticated users
 
 ## Tech Stack
 
-- Frontend: React, Vite, React Router, Recharts
-- Backend: Node.js, Express, MongoDB, JWT, bcrypt
+- Frontend: React, Vite, Tailwind CSS, React Router
+- Charts: Recharts
+- Backend: Node.js, Express
+- Database: MongoDB with Mongoose
+- Authentication: JWT
 - AI: Google Gemini API
 
 ## Project Structure
 
-- client: React frontend
-- server: Express backend API
+```bash
+.
+├── client/
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.js
+├── server/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   ├── index.js
+│   └── package.json
+└── README.md
+```
+
+## Demo Access
+
+The login page includes a demo option so users can explore the product without creating a real account or using test data.
+
+Available demo roles:
+
+- Demo User
+- Developer Demo
+
+These demo sessions instantly open the dashboard and let you review the application flow.
 
 ## Getting Started
 
-### 1. Install dependencies
-
-In the client folder:
+### 1. Install frontend dependencies
 
 ```bash
+cd client
 npm install
 ```
 
-In the server folder:
+### 2. Install backend dependencies
 
 ```bash
+cd server
 npm install
 ```
 
-### 2. Configure environment variables
+### 3. Configure environment variables
 
-Create a `.env` file in the server directory with:
+Create a `.env` file inside the `server` folder:
 
 ```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+JWT_SECRET=your_jwt_secret
 GEMINI_API_KEY=your_gemini_api_key
 ```
 
-### 3. Run the app
+### 4. Run the app
 
 Start the backend:
 
@@ -64,11 +97,28 @@ cd client
 npm run dev
 ```
 
-The frontend will be available in the browser, and the backend API will run on the configured port.
+Then open the frontend in your browser, usually at:
+
+```bash
+http://localhost:5173
+```
 
 ## Notes
 
-- Make sure MongoDB is running or reachable through the provided connection string.
-- The AI insights feature depends on a valid Gemini API key.
+- MongoDB must be running and reachable using the provided `MONGO_URI`.
+- The AI insights feature requires a valid Google Gemini API key.
+- If you want to test the UI without backend auth, use the demo buttons from the login screen.
+
+## Typical User Flow
+
+1. Sign in or use demo access
+2. Add expenses from the expense page
+3. Review dashboard summaries and trends
+4. Generate AI-powered spending insights
+5. Adjust budgets and spending habits based on recommendations
+
+## License
+
+This project is for educational and demo purposes.
 
 
