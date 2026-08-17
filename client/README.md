@@ -100,7 +100,7 @@ npm run dev
 Then open the frontend in your browser, usually at:
 
 ```bash
-http://localhost:5173
+http://localhost:5170
 ```
 
 ## Notes
